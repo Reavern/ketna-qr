@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import QRCode from 'qrcode.react';
-// import QRCode from 'qrcode-react';
 
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
     const router = useRouter()
     const { name, year, date, code } = router.query;
+
     return (
         <>
             <Head>
@@ -54,27 +54,19 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                                     <div className="col-12 qr-code">
                                         <div className="qr-code-container d-block mx-auto">
                                             <QRCode
-                                                value={code}
-                                                size={200}
+                                                value={code ? code : ''}
+                                                size={180}
                                                 className="d-block mx-auto"
                                                 imageSettings={{
                                                     src: '/img/logo_center.png',
-                                                    excavate: true,
-                                                    height: 27,
-                                                    width: 27
+                                                    excavate: false,
+                                                    height: 35,
+                                                    width: 35
                                                 }}
                                             />
                                         </div>
                                     </div>
 
-                                    {/* <div className="col-12 qr-code" style={{ backgroundColor: 'red' }}>
-
-                                        <QRCode
-                                            value={code}
-                                            className="d-block mx-auto"
-                                        />
-                                        <img src='/img/qr-code.png' className="d-block mx-auto" />
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
