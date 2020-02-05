@@ -4,12 +4,16 @@ import Head from 'next/head';
 import { useRouter } from 'next/router'
 import QRCode from 'qrcode.react';
 
+import useResizeObserver from "use-resize-observer";
+
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
     const router = useRouter()
     const { name, year, date, code } = router.query;
 
+    const { ref, width = 1, height = 1 } = useResizeObserver();
+
     return (
-        <>
+        <div ref={ref}>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -32,7 +36,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                     <div className="row">
                         <div className="col-12 qr-box">
                             <div className="qr-box__content">
-                                <img src='/img/logo.png' className="img-fluid d-block mx-auto logo" />
+                                <img src='/img/logo.png' className="img-fluid d-block mx-auto logo" style={{ width: width / 3 }} />
 
                                 <div className="row mt-3 mt-md-4">
                                     <div className="col-6">
@@ -52,16 +56,16 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                                     </div>
 
                                     <div className="col-12 qr-code">
-                                        <div className="qr-code-container d-block mx-auto">
+                                        <div className="qr-code-container d-block mx-auto" style={{ width: (width / 5) +20 }}>
                                             <QRCode
                                                 value={code ? code : ''}
-                                                size={180}
+                                                size={width / 5}
                                                 className="d-block mx-auto"
                                                 imageSettings={{
                                                     src: '/img/logo_center.png',
                                                     excavate: false,
-                                                    height: 35,
-                                                    width: 35
+                                                    height: width / 25,
+                                                    width: width / 25
                                                 }}
                                             />
                                         </div>
@@ -75,7 +79,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
 
 
             </>
-        </>
+        </div>
     );
 }
 

@@ -88,10 +88,13 @@ body {
         font-size: 14px;
         margin-bottom: 15px;
     }
-      
-      .qr-box__content .qr-code img {
-          width: 100px;
-          box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.2);
+
+    .qr-box__content .qr-code p {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+     
+    .qr-box__content .qr-code .qr-code-container  {
+          width: 110px;
       }
-      
 }

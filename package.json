@@ -35,7 +35,8 @@
     "react-dom": "^16.12.0",
     "react-paginate": "^6.3.2",
     "react-visibility-sensor": "^5.1.1",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "use-resize-observer": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.0",
